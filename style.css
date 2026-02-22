@@ -3115,8 +3115,16 @@ body.light-mode .footer-logo {
 }
 
 /* HIW Responsive */
+@media (max-width: 768px) {
+    .hiw-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
 @media (max-width: 480px) {
     .hiw-grid {
+        grid-template-columns: 1fr;
         gap: 20px;
     }
     .hiw-step-card {
