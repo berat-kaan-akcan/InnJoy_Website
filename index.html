@@ -1,0 +1,840 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta -->
+    <title>InnJoy — Akıllı Otel Deneyimi</title>
+    <meta name="description" content="InnJoy — Akıllı Otel Deneyimi. Misafirlerinize ve otel yönetimine yeni bir boyut kazandırın. QR ile kapı açma, oda servisi, spa, etkinlikler ve daha fazlası.">
+    <meta name="keywords" content="otel yönetimi, akıllı otel, hotel management, QR kapı açma, oda servisi, spa, Flutter, Firebase, InnJoy">
+    <meta name="author" content="InnJoy Team">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#050a18">
+
+    <!-- Open Graph (Facebook / LinkedIn / WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="InnJoy — Akıllı Otel Deneyimi">
+    <meta property="og:description" content="Misafirlerinize unutulmaz bir konaklama deneyimi sunun. QR ile kapı açma, oda servisi, spa randevusu, etkinlik takibi ve çok daha fazlası — hepsi tek bir uygulamada.">
+    <meta property="og:image" content="Screenshots/anaekran.webp">
+    <meta property="og:url" content="https://innjoy.app">
+    <meta property="og:site_name" content="InnJoy">
+    <meta property="og:locale" content="tr_TR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="InnJoy — Akıllı Otel Deneyimi">
+    <meta name="twitter:description" content="Misafirlerinize unutulmaz bir konaklama deneyimi sunun. QR ile kapı açma, oda servisi, spa randevusu ve çok daha fazlası.">
+    <meta name="twitter:image" content="Screenshots/anaekran.webp">
+    <meta name="twitter:site" content="@innjoy_app">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://innjoy.app">
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Screenshots/logo.png" type="image/png">
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <img src="Screenshots/logo.png" alt="InnJoy Logo" class="nav-logo-img">
+                <span>InnJoy</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menü">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features" data-tr="Özellikler" data-en="Features">Özellikler</a></li>
+                <li><a href="#admin" data-tr="Yönetim" data-en="Management">Yönetim</a></li>
+                <li><a href="#tech" data-tr="Teknoloji" data-en="Technology">Teknoloji</a></li>
+                <li><a href="#how-it-works" data-tr="Nasıl Çalışır" data-en="How It Works">Nasıl Çalışır</a></li>
+                <li><a href="#team" data-tr="Ekip" data-en="Team">Ekip</a></li>
+            </ul>
+            <div class="nav-right-group">
+                <!-- Dark / Light Mode Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Tema değiştir" title="Tema değiştir">
+                    <span class="theme-icon theme-icon-dark">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                    </span>
+                    <span class="theme-icon theme-icon-light">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    </span>
+                </button>
+                <div class="lang-switcher" id="langSwitcher">
+                    <div class="lang-slider" id="langSlider"></div>
+                    <button class="lang-option active" data-lang="tr" id="langTR">TR</button>
+                    <button class="lang-option" data-lang="en" id="langEN">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge" data-tr="🏨 Yeni Nesil Otel Yönetimi" data-en="🏨 Next-Gen Hotel Management">🏨 Yeni Nesil Otel Yönetimi</div>
+            <h1 class="hero-title">
+                <span class="gradient-text">InnJoy</span>
+                <br><span data-tr="Akıllı Otel Deneyimi" data-en="Smart Hotel Experience">Akıllı Otel Deneyimi</span>
+            </h1>
+            <p class="hero-subtitle" data-tr="Misafirlerinize unutulmaz bir konaklama deneyimi sunun. QR ile kapı açma, oda servisi, spa randevusu, etkinlik takibi ve çok daha fazlası — hepsi tek bir uygulamada." data-en="Offer your guests an unforgettable stay experience. QR door access, room service, spa appointments, event tracking and much more — all in one app.">
+                Misafirlerinize unutulmaz bir konaklama deneyimi sunun. 
+                QR ile kapı açma, oda servisi, spa randevusu, etkinlik takibi 
+                ve çok daha fazlası — hepsi tek bir uygulamada.
+            </p>
+            <div class="hero-buttons">
+                <a href="#features" class="btn btn-primary">
+                    <span data-tr="Keşfedin" data-en="Explore">Keşfedin</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7.8H7.8"/></svg>
+                </a>
+                <a href="#how-it-works" class="btn btn-download" id="downloadBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span data-tr="Hemen Kur &amp; Dene" data-en="Install &amp; Try">Hemen Kur &amp; Dene</span>
+                </a>
+            </div>
+
+        </div>
+        <div class="hero-visual">
+            <div class="phone-mockup">
+                <div class="phone-frame">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <img src="Screenshots/anaekran.webp" alt="InnJoy Ana Ekran" class="hero-screenshot-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Showcase Section (Merged Features & Gallery) -->
+    <section class="app-showcase-section" id="features">
+        <div class="app-bg-glow"></div>
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-tr="Uygulama Deneyimi" data-en="App Experience">Uygulama Deneyimi</span>
+                <h2 data-tr="Her Şey Parmaklarınızın Ucunda" data-en="Everything at Your Fingertips">Her Şey Parmaklarınızın Ucunda</h2>
+                <p data-tr="Misafirlerinizin otel deneyimini en üst seviyeye çıkaran kapsamlı ve kullanıcı dostu arayüz." data-en="Comprehensive and user-friendly interface that elevates your guests' hotel experience to the highest level.">Misafirlerinizin otel deneyimini en üst seviyeye çıkaran kapsamlı ve kullanıcı dostu arayüz.</p>
+            </div>
+
+            <!-- App Phone Showcase -->
+            <div class="app-phones-showcase">
+                <!-- Screen 1: Giriş -->
+                <div class="app-phone-card reveal" data-delay="0">
+                    <div class="app-phone-badge app-badge-blue" data-tr="Giriş" data-en="Login">Giriş</div>
+                    <div class="app-phone-frame">
+                        <div class="app-phone-notch"></div>
+                        <div class="app-screen">
+                            <img src="Screenshots/gırıs_ekranı.webp" alt="App Login" class="app-phone-img">
+                        </div>
+                    </div>
+                    <div class="app-phone-label" data-tr="Giriş Ekranı" data-en="Login Screen">Giriş Ekranı</div>
+                </div>
+
+                <!-- Screen 2: Otel Seçimi -->
+                <div class="app-phone-card reveal" data-delay="100">
+                    <div class="app-phone-badge app-badge-green" data-tr="Seçim" data-en="Selection">Seçim</div>
+                    <div class="app-phone-frame">
+                        <div class="app-phone-notch"></div>
+                        <div class="app-screen">
+                            <img src="Screenshots/otel_seçim.webp" alt="App Hotel Selection" class="app-phone-img">
+                        </div>
+                    </div>
+                    <div class="app-phone-label" data-tr="Otel Seçimi" data-en="Hotel Selection">Otel Seçimi</div>
+                </div>
+
+                <!-- Screen 3: Ana Ekran -->
+                <div class="app-phone-card reveal" data-delay="200">
+                    <div class="app-phone-badge app-badge-orange" data-tr="Ana Ekran" data-en="Home">Ana Ekran</div>
+                    <div class="app-phone-frame">
+                        <div class="app-phone-notch"></div>
+                        <div class="app-screen">
+                            <img src="Screenshots/anaekran.webp" alt="App Home" class="app-phone-img">
+                        </div>
+                    </div>
+                    <div class="app-phone-label" data-tr="Dashboard" data-en="Dashboard">Dashboard</div>
+                </div>
+
+                <!-- Screen 4: Hizmetler -->
+                <div class="app-phone-card reveal" data-delay="300">
+                    <div class="app-phone-badge app-badge-purple" data-tr="Hizmetler" data-en="Services">Hizmetler</div>
+                    <div class="app-phone-frame">
+                        <div class="app-phone-notch"></div>
+                        <div class="app-screen">
+                            <img src="Screenshots/servısler.webp" alt="App Services" class="app-phone-img">
+                        </div>
+                    </div>
+                    <div class="app-phone-label" data-tr="Tüm Hizmetler" data-en="All Services">Tüm Hizmetler</div>
+                </div>
+
+                <!-- Screen 5: Oda Servisi -->
+                <div class="app-phone-card reveal" data-delay="400">
+                    <div class="app-phone-badge app-badge-yellow" data-tr="Oda Servisi" data-en="Room Service">Oda Servisi</div>
+                    <div class="app-phone-frame">
+                        <div class="app-phone-notch"></div>
+                        <div class="app-screen">
+                            <img src="Screenshots/roomservıs.webp" alt="App Room Service" class="app-phone-img">
+                        </div>
+                    </div>
+                    <div class="app-phone-label" data-tr="Lezzetler" data-en="Dining">Lezzetler</div>
+                </div>
+
+                <!-- Screen 6: Etkinlikler -->
+                <div class="app-phone-card reveal" data-delay="500">
+                    <div class="app-phone-badge app-badge-red" data-tr="Etkinlikler" data-en="Events">Etkinlikler</div>
+                    <div class="app-phone-frame">
+                        <div class="app-phone-notch"></div>
+                        <div class="app-screen">
+                            <img src="Screenshots/etkınlı_sayfası.58.webp" alt="App Events" class="app-phone-img">
+                        </div>
+                    </div>
+                    <div class="app-phone-label" data-tr="Aktiviteler" data-en="Activities">Aktiviteler</div>
+                </div>
+
+                <!-- Screen 7: Housekeeping -->
+                <div class="app-phone-card reveal" data-delay="600">
+                    <div class="app-phone-badge app-badge-blue" data-tr="Temizlik" data-en="Cleaning">Temizlik</div>
+                    <div class="app-phone-frame">
+                        <div class="app-phone-notch"></div>
+                        <div class="app-screen">
+                            <img src="Screenshots/housekeeping.webp" alt="App Housekeeping" class="app-phone-img">
+                        </div>
+                    </div>
+                    <div class="app-phone-label" data-tr="Housekeeping" data-en="Housekeeping">Housekeeping</div>
+                </div>
+
+                <!-- Screen 8: SOS -->
+                <div class="app-phone-card reveal" data-delay="700">
+                    <div class="app-phone-badge app-badge-red" data-tr="Acil" data-en="SOS">Acil</div>
+                    <div class="app-phone-frame">
+                        <div class="app-phone-notch"></div>
+                        <div class="app-screen">
+                            <img src="Screenshots/sos.webp" alt="App SOS" class="app-phone-img">
+                        </div>
+                    </div>
+                    <div class="app-phone-label" data-tr="Yardım & SOS" data-en="Help & SOS">Yardım & SOS</div>
+                </div>
+
+                <!-- Screen 9: Plans -->
+                <div class="app-phone-card reveal" data-delay="800">
+                    <div class="app-phone-badge app-badge-green" data-tr="Planlar" data-en="Plans">Planlar</div>
+                    <div class="app-phone-frame">
+                        <div class="app-phone-notch"></div>
+                        <div class="app-screen">
+                            <img src="Screenshots/plans.webp" alt="App Plans" class="app-phone-img">
+                        </div>
+                    </div>
+                    <div class="app-phone-label" data-tr="Planlarım" data-en="My Plans">Planlarım</div>
+                </div>
+
+                <!-- Screen 10: Profil -->
+                <div class="app-phone-card reveal" data-delay="900">
+                    <div class="app-phone-badge app-badge-purple" data-tr="Profil" data-en="Profile">Profil</div>
+                    <div class="app-phone-frame">
+                        <div class="app-phone-notch"></div>
+                        <div class="app-screen">
+                            <img src="Screenshots/profıl.jpeg" alt="App Profile" class="app-phone-img">
+                        </div>
+                    </div>
+                    <div class="app-phone-label" data-tr="Kişisel" data-en="Personal">Kişisel</div>
+                </div>
+            </div>
+
+            <!-- App Feature Grid -->
+            <div class="app-feature-grid">
+                <div class="app-feat-card reveal" data-delay="0">
+                    <div class="app-feat-icon" style="--feat-color: #3b82f6; --feat-bg: rgba(59,130,246,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M13.8 12H3"/></svg>
+                    </div>
+                    <h4 data-tr="Hızlı Giriş" data-en="Quick Login">Hızlı Giriş</h4>
+                    <p data-tr="PNR veya rezervasyon koduyla anında giriş yapın." data-en="Log in instantly with PNR or reservation code.">PNR veya rezervasyon koduyla anında giriş yapın.</p>
+                </div>
+                <div class="app-feat-card reveal" data-delay="100">
+                    <div class="app-feat-icon" style="--feat-color: #22c55e; --feat-bg: rgba(34,197,94,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    </div>
+                    <h4 data-tr="Otel Seçimi" data-en="Hotel Selection">Otel Seçimi</h4>
+                    <p data-tr="Konakladığınız oteli listeden seçin veya QR okutun." data-en="Select your hotel from the list or scan a QR code.">Konakladığınız oteli listeden seçin veya QR okutun.</p>
+                </div>
+                <div class="app-feat-card reveal" data-delay="200">
+                    <div class="app-feat-icon" style="--feat-color: #f97316; --feat-bg: rgba(249,115,22,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h4 data-tr="Akıllı Dashboard" data-en="Smart Dashboard">Akıllı Dashboard</h4>
+                    <p data-tr="Otel duyuruları ve harcamalarınız tek bakışta orda." data-en="Hotel announcements and expenses at a single glance.">Otel duyuruları ve harcamalarınız tek bakışta orda.</p>
+                </div>
+                <div class="app-feat-card reveal" data-delay="300">
+                    <div class="app-feat-icon" style="--feat-color: #a855f7; --feat-bg: rgba(168,85,247,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <h4 data-tr="Tüm Hizmetler" data-en="All Services">Tüm Hizmetler</h4>
+                    <p data-tr="Spa, havuz ve diğer tüm aktivitelere kolayca göz atın." data-en="Easily browse spa, pool, and all other activities.">Spa, havuz ve diğer tüm aktivitelere kolayca göz atın.</p>
+                </div>
+                <div class="app-feat-card reveal" data-delay="400">
+                    <div class="app-feat-icon" style="--feat-color: #eab308; --feat-bg: rgba(234,179,8,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                    </div>
+                    <h4 data-tr="Oda Servisi" data-en="Room Service">Oda Servisi</h4>
+                    <p data-tr="Zengin menüden seçim yapın, odanıza anında sipariş verin." data-en="Choose from a rich menu, order instantly to your room.">Zengin menüden seçim yapın, odanıza anında sipariş verin.</p>
+                </div>
+                <div class="app-feat-card reveal" data-delay="500">
+                    <div class="app-feat-icon" style="--feat-color: #ef4444; --feat-bg: rgba(239,68,68,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <h4 data-tr="Etkinlik Takvimi" data-en="Event Calendar">Etkinlik Takvimi</h4>
+                    <p data-tr="Oteldeki etkinlikleri kaçırmayın, kendinize hatırlatıcı ekleyin." data-en="Don't miss hotel events, add reminders for yourself.">Oteldeki etkinlikleri kaçırmayın, kendinize hatırlatıcı ekleyin.</p>
+                </div>
+                <div class="app-feat-card reveal" data-delay="600">
+                    <div class="app-feat-icon" style="--feat-color: #3b82f6; --feat-bg: rgba(59,130,246,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h4 data-tr="Housekeeping" data-en="Housekeeping">Housekeeping</h4>
+                    <p data-tr="Havlu, temizlik veya mini bar taleplerini tek tıkla iletin." data-en="Send towel, cleaning, or mini bar requests with one click.">Havlu, temizlik veya mini bar taleplerini tek tıkla iletin.</p>
+                </div>
+                <div class="app-feat-card reveal" data-delay="700">
+                    <div class="app-feat-icon" style="--feat-color: #ef4444; --feat-bg: rgba(239,68,68,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h4 data-tr="Acil SOS" data-en="Emergency SOS">Acil SOS</h4>
+                    <p data-tr="Acil durumlarda anında otel görevlisi ile iletişime geçin." data-en="Instantly contact hotel staff in emergencies.">Acil durumlarda anında otel görevlisi ile iletişime geçin.</p>
+                </div>
+                <div class="app-feat-card reveal" data-delay="800">
+                    <div class="app-feat-icon" style="--feat-color: #22c55e; --feat-bg: rgba(34,197,94,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="13" y2="18"/></svg>
+                    </div>
+                    <h4 data-tr="Planlarım" data-en="My Plans">Planlarım</h4>
+                    <p data-tr="Restoran, spa ve etkinlik rezervasyonlarınızı tek ekranda görün." data-en="View all your restaurant, spa, and event reservations in one place.">Restoran, spa ve etkinlik rezervasyonlarınızı tek ekranda görün.</p>
+                </div>
+                <div class="app-feat-card reveal" data-delay="900">
+                    <div class="app-feat-icon" style="--feat-color: #a855f7; --feat-bg: rgba(168,85,247,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h4 data-tr="Misafir Profili" data-en="Guest Profile">Misafir Profili</h4>
+                    <p data-tr="Tercihlerinizi yönetin ve konaklama geçmişinizi görün." data-en="Manage your preferences and see your stay history.">Tercihlerinizi yönetin ve konaklama geçmişinizi görün.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Admin Section -->
+    <section class="admin-section" id="admin">
+        <div class="admin-bg-glow"></div>
+        <div class="container">
+            <!-- Header -->
+            <div class="section-header reveal">
+                <span class="section-tag" data-tr="Yönetim Paneli" data-en="Admin Panel">Yönetim Paneli</span>
+                <h2 data-tr="Otelinizi Tam Kontrol Altına Alın" data-en="Take Full Control of Your Hotel">Otelinizi Tam Kontrol Altına Alın</h2>
+                <p data-tr="InnJoy'un güçlü admin paneli ile otel operasyonlarınızı tek ekrandan kolayca yönetin." data-en="Manage all your hotel operations easily from a single screen with InnJoy's powerful admin panel.">InnJoy'un güçlü admin paneli ile otel operasyonlarınızı tek ekrandan kolayca yönetin.</p>
+            </div>
+
+            <!-- Admin Phone Showcase -->
+            <div class="admin-phones-showcase">
+
+                <!-- Screen 1: Dashboard -->
+                <div class="admin-phone-card reveal" data-delay="0">
+                    <div class="admin-phone-badge admin-badge-blue" data-tr="Ana Ekran" data-en="Dashboard">Ana Ekran</div>
+                    <div class="admin-phone-frame">
+                        <div class="admin-phone-notch"></div>
+                        <div class="admin-phone-screen">
+                            <img src="Screenshots/admın_anaekran.webp" alt="Admin Dashboard" class="admin-phone-img">
+                        </div>
+                    </div>
+                    <div class="admin-phone-label" data-tr="Dashboard" data-en="Dashboard">Dashboard</div>
+                </div>
+
+                <!-- Screen 2: Rooms -->
+                <div class="admin-phone-card reveal" data-delay="100">
+                    <div class="admin-phone-badge admin-badge-green" data-tr="Odalar" data-en="Rooms">Odalar</div>
+                    <div class="admin-phone-frame">
+                        <div class="admin-phone-notch"></div>
+                        <div class="admin-phone-screen">
+                            <img src="Screenshots/room.webp" alt="Admin Rooms" class="admin-phone-img">
+                        </div>
+                    </div>
+                    <div class="admin-phone-label" data-tr="Oda Yönetimi" data-en="Room Management">Oda Yönetimi</div>
+                </div>
+
+                <!-- Screen 3: Edit Categories -->
+                <div class="admin-phone-card reveal" data-delay="200">
+                    <div class="admin-phone-badge admin-badge-purple" data-tr="Kategoriler" data-en="Categories">Kategoriler</div>
+                    <div class="admin-phone-frame">
+                        <div class="admin-phone-notch"></div>
+                        <div class="admin-phone-screen">
+                            <img src="Screenshots/katogerı.webp" alt="Admin Categories" class="admin-phone-img">
+                        </div>
+                    </div>
+                    <div class="admin-phone-label" data-tr="Kategori Yönetimi" data-en="Category Management">Kategori Yönetimi</div>
+                </div>
+
+                <!-- Screen 4: Emergencies -->
+                <div class="admin-phone-card reveal" data-delay="300">
+                    <div class="admin-phone-badge admin-badge-red" data-tr="Acil Durum" data-en="Emergency">Acil Durum</div>
+                    <div class="admin-phone-frame">
+                        <div class="admin-phone-notch"></div>
+                        <div class="admin-phone-screen">
+                            <img src="Screenshots/admın_sos.webp" alt="Admin Emergencies" class="admin-phone-img">
+                        </div>
+                    </div>
+                    <div class="admin-phone-label" data-tr="Acil Durum Yönetimi" data-en="Emergency Management">Acil Durum Yönetimi</div>
+                </div>
+
+                <!-- Screen 5: Requests -->
+                <div class="admin-phone-card reveal" data-delay="400">
+                    <div class="admin-phone-badge admin-badge-orange" data-tr="Talepler" data-en="Requests">Talepler</div>
+                    <div class="admin-phone-frame">
+                        <div class="admin-phone-notch"></div>
+                        <div class="admin-phone-screen">
+                            <img src="Screenshots/request.webp" alt="Admin Requests" class="admin-phone-img">
+                        </div>
+                    </div>
+                    <div class="admin-phone-label" data-tr="Talep Yönetimi" data-en="Request Management">Talep Yönetimi</div>
+                </div>
+
+            </div>
+
+            <!-- Feature Grid -->
+            <div class="admin-feature-grid">
+                <div class="admin-feat-card reveal" data-delay="0">
+                    <div class="admin-feat-icon" style="--feat-color: #3b82f6; --feat-bg: rgba(59,130,246,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    </div>
+                    <h4 data-tr="Genel İzleme" data-en="Dashboard Overview">Genel İzleme</h4>
+                    <p data-tr="Doluluk oranları, giriş-çıkışlar ve günlük özet raporları takip edin." data-en="Track occupancy rates, check-ins/outs, and daily summary reports.">Doluluk oranları, giriş-çıkışlar ve günlük özet raporları takip edin.</p>
+                </div>
+                <div class="admin-feat-card reveal" data-delay="100">
+                    <div class="admin-feat-icon" style="--feat-color: #22c55e; --feat-bg: rgba(34,197,94,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h4 data-tr="Oda Yönetimi" data-en="Room Management">Oda Yönetimi</h4>
+                    <p data-tr="Odaları filtrele, misafir ata, durumları anlık takip et." data-en="Filter rooms, assign guests, track statuses in real-time.">Odaları filtrele, misafir ata, durumları anlık takip et.</p>
+                </div>
+                <div class="admin-feat-card reveal" data-delay="200">
+                    <div class="admin-feat-icon" style="--feat-color: #a855f7; --feat-bg: rgba(168,85,247,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h4 data-tr="Kategori Yönetimi" data-en="Category Management">Kategori Yönetimi</h4>
+                    <p data-tr="Menüleri, etkinlikleri, spa ve oda servislerini düzenle." data-en="Edit menus, events, spa and room service categories.">Menüleri, etkinlikleri, spa ve oda servislerini düzenle.</p>
+                </div>
+                <div class="admin-feat-card reveal" data-delay="300">
+                    <div class="admin-feat-icon" style="--feat-color: #ef4444; --feat-bg: rgba(239,68,68,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h4 data-tr="Acil Durum Merkezi" data-en="Emergency Center">Acil Durum Merkezi</h4>
+                    <p data-tr="SOS alarmlarını anlık yönet, hızlı müdahale edin." data-en="Manage SOS alarms in real-time, respond quickly.">SOS alarmlarını anlık yönet, hızlı müdahale edin.</p>
+                </div>
+                <div class="admin-feat-card reveal" data-delay="400">
+                    <div class="admin-feat-icon" style="--feat-color: #fb923c; --feat-bg: rgba(249,115,22,0.12);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+                    </div>
+                    <h4 data-tr="Talep Yönetimi" data-en="Request Management">Talep Yönetimi</h4>
+                    <p data-tr="Misafir taleplerini ve siparişlerini anlık olarak takip edin." data-en="Instantly track guest requests and orders.">Misafir taleplerini ve siparişlerini anlık olarak takip edin.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="tech-section" id="tech">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-tr="Teknoloji" data-en="Technology">Teknoloji</span>
+                <h2 data-tr="Güçlü Altyapı" data-en="Powerful Infrastructure">Güçlü Altyapı</h2>
+                <p data-tr="Modern ve güvenilir teknolojilerle inşa edildi" data-en="Built with modern and reliable technologies">Modern ve güvenilir teknolojilerle inşa edildi</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-card reveal" data-delay="0">
+                    <div class="tech-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48"><path d="M24 4L6 14v20l18 10 18-10V14L24 4z" fill="none" stroke="#38bdf8" stroke-width="2"/><path d="M24 24l18-10M24 24v20M24 24L6 14" stroke="#38bdf8" stroke-width="1.5" opacity="0.5"/></svg>
+                    </div>
+                    <h3>Flutter</h3>
+                    <p data-tr="Tek kod tabanından iOS ve Android için native performanslı uygulama." data-en="Native performance app for iOS and Android from a single codebase.">Tek kod tabanından iOS ve Android için native performanslı uygulama.</p>
+                </div>
+                <div class="tech-card reveal" data-delay="100">
+                    <div class="tech-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="#f97316" stroke-width="2"/><circle cx="24" cy="24" r="4" fill="#f97316"/><path d="M24 6v36M6 24h36" stroke="#f97316" stroke-width="1" opacity="0.3"/></svg>
+                    </div>
+                    <h3>Firebase</h3>
+                    <p data-tr="Gerçek zamanlı veritabanı, kimlik doğrulama ve bulut depolama altyapısı." data-en="Real-time database, authentication and cloud storage infrastructure.">Gerçek zamanlı veritabanı, kimlik doğrulama ve bulut depolama altyapısı.</p>
+                </div>
+                <div class="tech-card reveal" data-delay="200">
+                    <div class="tech-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="6" fill="none" stroke="#22c55e" stroke-width="2"/><path d="M16 24h16M24 16v16" stroke="#22c55e" stroke-width="2"/></svg>
+                    </div>
+                    <h3>Cloud Firestore</h3>
+                    <p data-tr="NoSQL veritabanı ile güvenli ve ölçeklenebilir veri yönetimi." data-en="Secure and scalable data management with NoSQL database.">NoSQL veritabanı ile güvenli ve ölçeklenebilir veri yönetimi.</p>
+                </div>
+                <div class="tech-card reveal" data-delay="300">
+                    <div class="tech-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48"><path d="M24 4C14 4 6 12 6 22c0 14 18 22 18 22s18-8 18-22C42 12 34 4 24 4z" fill="none" stroke="#22c55e" stroke-width="2"/><circle cx="24" cy="22" r="5" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
+                    </div>
+                    <h3>flutter_map</h3>
+                    <p data-tr="OpenStreetMap tabanlı harita entegrasyonu ile konum hizmetleri ve acil çıkış yönlendirmesi." data-en="Location services and emergency exit guidance with OpenStreetMap-based map integration.">OpenStreetMap tabanlı harita entegrasyonu ile konum hizmetleri ve acil çıkış yönlendirmesi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+
+            <!-- Part 1: Classic 4 Steps -->
+            <div class="section-header reveal">
+                <span class="section-tag" data-tr="Nasıl Çalışır" data-en="How It Works">Nasıl Çalışır</span>
+                <h2 data-tr="4 Basit Adım" data-en="4 Simple Steps">4 Basit Adım</h2>
+                <p data-tr="InnJoy ile otel deneyiminizi başlatmak çok kolay" data-en="Getting started with your InnJoy hotel experience is very easy">InnJoy ile otel deneyiminizi başlatmak çok kolay</p>
+            </div>
+            <div class="steps-container">
+                <div class="step reveal" data-delay="0">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-icon">📱</div>
+                        <h3 data-tr="Uygulamayı İndirin" data-en="Download the App">Uygulamayı İndirin</h3>
+                        <p data-tr="InnJoy'u App Store veya Google Play'den indirin ve hesabınızı oluşturun." data-en="Download InnJoy from the App Store or Google Play and create your account.">InnJoy'u App Store veya Google Play'den indirin ve hesabınızı oluşturun.</p>
+                    </div>
+                </div>
+                <div class="step-connector reveal"></div>
+                <div class="step reveal" data-delay="150">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-icon">🏨</div>
+                        <h3 data-tr="Check-in Yapın" data-en="Check In">Check-in Yapın</h3>
+                        <p data-tr="Resepsiyonda odanız atanır ve dijital anahtar kartınız aktif olur." data-en="Your room is assigned at reception and your digital key card is activated.">Your room is assigned at reception and your digital key card is activated.</p>
+                    </div>
+                </div>
+                <div class="step-connector reveal"></div>
+                <div class="step reveal" data-delay="300">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-icon">✨</div>
+                        <h3 data-tr="Hizmetleri Keşfedin" data-en="Explore Services">Hizmetleri Keşfedin</h3>
+                        <p data-tr="Oda servisi, spa, restoran, etkinlikler... tüm otel hizmetlerine erişin." data-en="Room service, spa, restaurant, events... access all hotel services.">Oda servisi, spa, restoran, etkinlikler... tüm otel hizmetlerine erişin.</p>
+                    </div>
+                </div>
+                <div class="step-connector reveal"></div>
+                <div class="step reveal" data-delay="450">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <div class="step-icon">🎉</div>
+                        <h3 data-tr="Tadını Çıkarın" data-en="Enjoy Your Stay">Tadını Çıkarın</h3>
+                        <p data-tr="Konaklamanızın tadını çıkarın, her şey kontrol altında ve parmaklarınızın ucunda." data-en="Enjoy your stay, everything is under control and at your fingertips.">Konaklamanızın tadını çıkarın, her şey kontrol altında ve parmaklarınızın ucunda.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="hiw-divider reveal">
+                <span data-tr="📲 Şimdi Siz Deneyin" data-en="📲 Now It's Your Turn">📲 Şimdi Siz Deneyin</span>
+            </div>
+
+            <!-- Part 2: Install & Try (Two Columns) -->
+            <div class="hiw-grid reveal">
+
+                <!-- Left: Install Steps -->
+                <div class="hiw-steps-col">
+                    <h3 class="hiw-col-title" data-tr="📲 Nasıl Kurulur?" data-en="📲 How to Install?">📲 Nasıl Kurulur?</h3>
+                    <ol class="hiw-install-list">
+                        <li class="hiw-step-card">
+                            <div class="hiw-step-icon-wrap hiw-icon-blue">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="15"/><polyline points="9 12 12 15 15 12"/><path d="M5 20h14"/></svg>
+                                <span class="hiw-step-badge">1</span>
+                            </div>
+                            <div class="hiw-step-body">
+                                <strong data-tr="APK'yı İndir" data-en="Download the APK">APK'yı İndir</strong>
+                                <span data-tr="Aşağıdaki yeşil butona bas, dosya telefonuna inecek." data-en="Tap the green button below, the file will download to your phone.">Aşağıdaki yeşil butona bas, dosya telefonuna inecek.</span>
+                            </div>
+                        </li>
+                        <li class="hiw-step-card">
+                            <div class="hiw-step-icon-wrap hiw-icon-purple">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                <span class="hiw-step-badge">2</span>
+                            </div>
+                            <div class="hiw-step-body">
+                                <strong data-tr="Bilinmeyen Kaynaklara İzin Ver" data-en="Allow Unknown Sources">Bilinmeyen Kaynaklara İzin Ver</strong>
+                                <span data-tr="Ayarlar → Güvenlik → Bilinmeyen Uygulamalar → İzin Ver" data-en="Settings → Security → Unknown Apps → Allow">Ayarlar → Güvenlik → Bilinmeyen Uygulamalar → İzin Ver</span>
+                            </div>
+                        </li>
+                        <li class="hiw-step-card">
+                            <div class="hiw-step-icon-wrap hiw-icon-orange">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                <span class="hiw-step-badge">3</span>
+                            </div>
+                            <div class="hiw-step-body">
+                                <strong data-tr="APK'yı Aç ve Kur" data-en="Open &amp; Install APK">APK'yı Aç ve Kur</strong>
+                                <span data-tr="İndirilenler klasöründen InnJoy.apk'ya tıkla, &quot;Yükle&quot; butonuna bas." data-en="Open InnJoy.apk from your Downloads folder and tap &quot;Install&quot;.">İndirilenler klasöründen InnJoy.apk'ya tıkla, "Yükle" butonuna bas.</span>
+                            </div>
+                        </li>
+                        <li class="hiw-step-card hiw-step-last">
+                            <div class="hiw-step-icon-wrap hiw-icon-green">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                <span class="hiw-step-badge">4</span>
+                            </div>
+                            <div class="hiw-step-body">
+                                <strong data-tr="Uygulamayı Aç ve Giriş Yap" data-en="Launch the App">Uygulamayı Aç ve Giriş Yap</strong>
+                                <span data-tr="Kurulum tamamlandı! InnJoy ikonuna tıkla ve giriş yap." data-en="Installation complete! Tap the InnJoy icon and sign in.">Kurulum tamamlandı! InnJoy ikonuna tıkla ve giriş yap.</span>
+                            </div>
+                        </li>
+                    </ol>
+                    <a href="InnJoy.apk" download="InnJoy.apk" class="hiw-download-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="3" x2="12" y2="15"/><polyline points="9 12 12 15 15 12"/><path d="M5 20h14"/></svg>
+                        <span data-tr="InnJoy.apk İndir (57 MB)" data-en="Download InnJoy.apk (57 MB)">InnJoy.apk İndir (57 MB)</span>
+                    </a>
+                </div>
+
+
+                <!-- Right: Try with Test Account -->
+                <div class="hiw-try-col">
+                    <h3 class="hiw-col-title" data-tr="🔑 Test Hesabı ile Dene" data-en="🔑 Try with Test Account">🔑 Test Hesabı ile Dene</h3>
+                    <p class="hiw-try-desc" data-tr="Uygulamayı kurmadan önce demo hesabımızla inceleyin — tüm özelliklere erişim açık." data-en="Explore the app with our demo account before installing — all features are accessible.">Uygulamayı kurmadan önce demo hesabımızla inceleyin — tüm özelliklere erişim açık.</p>
+
+                    <div class="hiw-credentials">
+                        <div class="hiw-cred-row">
+                            <div class="hiw-cred-label">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                <span data-tr="E-posta" data-en="Email">E-posta</span>
+                            </div>
+                            <div class="hiw-cred-value">appinnjoy@gmail.com</div>
+                            <button class="hiw-copy-btn" data-copy="appinnjoy@gmail.com" aria-label="Kopyala">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            </button>
+                        </div>
+                        <div class="hiw-cred-row">
+                            <div class="hiw-cred-label">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                                <span data-tr="Şifre" data-en="Password">Şifre</span>
+                            </div>
+                            <div class="hiw-cred-value">123456</div>
+                            <button class="hiw-copy-btn" data-copy="123456" aria-label="Kopyala">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="hiw-try-tips">
+                        <p class="hiw-tip-title" data-tr="✨ Neleri Deneyebilirsin?" data-en="✨ What Can You Try?">✨ Neleri Deneyebilirsin?</p>
+                        <ul>
+                            <li data-tr="🔑 QR ile kapı açma ve dijital anahtar" data-en="🔑 QR door access &amp; digital key">🔑 QR ile kapı açma ve dijital anahtar</li>
+                            <li data-tr="🍽️ Oda servisi siparişi ve takibi" data-en="🍽️ Room service order &amp; tracking">🍽️ Oda servisi siparişi ve takibi</li>
+                            <li data-tr="🛀 Spa randevusu alma" data-en="🛀 Spa &amp; wellness booking">🛀 Spa randevusu alma</li>
+                            <li data-tr="🍽️ Restoran rezervasyonu ve menü" data-en="🍽️ Restaurant reservation &amp; menu">🍽️ Restoran rezervasyonu ve menü</li>
+                            <li data-tr="🎉 Etkinlik ve aktivite takibi" data-en="🎉 Events &amp; activities tracking">🎉 Etkinlik ve aktivite takibi</li>
+                            <li data-tr="🚨 Acil durum ve çıkış yönlendirme" data-en="🚨 Emergency &amp; exit navigation">🚨 Acil durum ve çıkış yönlendirme</li>
+                            <li data-tr="💰 Harcama takip ekranı" data-en="💰 Spending tracker">💰 Harcama takip ekranı</li>
+                            <li data-tr="📊 Profil yönetimi ve bildirimler" data-en="📊 Profile management &amp; notifications">📊 Profil yönetimi ve bildirimler</li>
+                            <li data-tr="📶 Wi-Fi bağlantı bilgileri" data-en="📶 Wi-Fi connection details">📶 Wi-Fi bağlantı bilgileri</li>
+                            <li data-tr="📅 Planlarım (rezervasyon &amp; etkinlik takvimi)" data-en="📅 My plans (reservation &amp; event calendar)">📅 Planlarım (rezervasyon &amp; etkinlik takvimi)</li>
+                        </ul>
+                    </div>
+                    <p class="hiw-warning" data-tr="⚠️ Bu bir test hesabıdır. Gerçek kişisel bilgilerinizi paylaşmayın." data-en="⚠️ This is a test account. Do not enter real personal data.">⚠️ Bu bir test hesabıdır. Gerçek kişisel bilgilerinizi paylaşmayın.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-tr="Ekibimiz" data-en="Our Team">Ekibimiz</span>
+                <h2 data-tr="InnJoy'u Yapanlar" data-en="The People Behind InnJoy">InnJoy'u Yapanlar</h2>
+                <p data-tr="Tutkulu bir ekip tarafından tasarlandı ve geliştirildi." data-en="Designed and developed by a passionate team.">Tutkulu bir ekip tarafından tasarlandı ve geliştirildi.</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Member 1: Berat Kaan Akcan -->
+                <a href="https://www.linkedin.com/in/berat-kaan-akcan-224781285/" target="_blank" rel="noopener noreferrer" class="team-card reveal" data-delay="0">
+                    <div class="team-avatar-wrap">
+                        <img src="Screenshots/berat.jpeg" alt="Berat Kaan Akcan" class="team-avatar-img" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+                    </div>
+                    <div class="team-info">
+                        <h3>Berat Kaan Akcan</h3>
+                        <span class="team-role" data-tr="Geliştirici" data-en="Developer">Geliştirici</span>
+                    </div>
+                    <div class="team-linkedin">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect width="24" height="24" rx="4" fill="#0077B5"/><path d="M7.5 9h-3v9h3V9zm-1.5-.9a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM19.5 18h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2V18h-3V9h3v1.4a4 4 0 013-1.4c2.2 0 4 1.8 4 4V18z" fill="white"/></svg>
+                        LinkedIn
+                    </div>
+                </a>
+
+                <!-- Member 2: Doğukan Direksiz -->
+                <a href="https://www.linkedin.com/in/do%C4%9Fukan-direksiz-92aa6b334" target="_blank" rel="noopener noreferrer" class="team-card reveal" data-delay="100">
+                    <div class="team-avatar-wrap">
+                        <img src="Screenshots/doğukan.jpeg" alt="Doğukan Direksiz" class="team-avatar-img" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+                    </div>
+                    <div class="team-info">
+                        <h3>Doğukan Direksiz</h3>
+                        <span class="team-role" data-tr="Geliştirici" data-en="Developer">Geliştirici</span>
+                    </div>
+                    <div class="team-linkedin">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect width="24" height="24" rx="4" fill="#0077B5"/><path d="M7.5 9h-3v9h3V9zm-1.5-.9a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM19.5 18h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2V18h-3V9h3v1.4a4 4 0 013-1.4c2.2 0 4 1.8 4 4V18z" fill="white"/></svg>
+                        LinkedIn
+                    </div>
+                </a>
+
+                <!-- Member 3: Berrin Al -->
+                <a href="https://www.linkedin.com/in/berrin-al/" target="_blank" rel="noopener noreferrer" class="team-card reveal" data-delay="200">
+                    <div class="team-avatar-wrap">
+                        <img src="Screenshots/berrin.jpeg" alt="Berrin Al" class="team-avatar-img" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+                    </div>
+                    <div class="team-info">
+                        <h3>Berrin Al</h3>
+                        <span class="team-role" data-tr="Geliştirici" data-en="Developer">Geliştirici</span>
+                    </div>
+                    <div class="team-linkedin">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect width="24" height="24" rx="4" fill="#0077B5"/><path d="M7.5 9h-3v9h3V9zm-1.5-.9a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM19.5 18h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2V18h-3V9h3v1.4a4 4 0 013-1.4c2.2 0 4 1.8 4 4V18z" fill="white"/></svg>
+                        LinkedIn
+                    </div>
+                </a>
+            </div>
+
+            <!-- Social Cards -->
+            <div class="social-cards reveal">
+
+                <!-- GitHub Card -->
+                <a href="https://github.com/dogukandireksiz/InnJoy" target="_blank" rel="noopener noreferrer" class="social-card github-card">
+                    <div class="social-card-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    </div>
+                    <div class="social-card-body">
+                        <span class="social-card-label" data-tr="Kaynak Kod" data-en="Source Code">Kaynak Kod</span>
+                        <h4>dogukandireksiz/InnJoy</h4>
+                        <p data-tr="Projeyi GitHub'da inceleyin" data-en="View project on GitHub">Projeyi GitHub'da inceleyin</p>
+                    </div>
+                    <div class="social-card-arrow">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7.8H7.8"/></svg>
+                    </div>
+                </a>
+
+                <!-- Instagram Card -->
+                <a href="https://www.instagram.com/innjoy_app" target="_blank" rel="noopener noreferrer" class="social-card instagram-card">
+                    <div class="social-card-icon instagram-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </div>
+                    <div class="social-card-body">
+                        <span class="social-card-label">Instagram</span>
+                        <h4>@innjoy_app</h4>
+                        <p data-tr="Bizi takip edin" data-en="Follow us">Bizi takip edin</p>
+                    </div>
+                    <div class="social-card-arrow">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7.8H7.8"/></svg>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                        <img src="Screenshots/logo.png" alt="InnJoy" class="footer-logo">
+                    <p data-tr="InnJoy — Akıllı Otel Deneyimi" data-en="InnJoy — Smart Hotel Experience">InnJoy — Akıllı Otel Deneyimi</p>
+                    <a href="mailto:innjoyapp@gmail.com" class="footer-email">
+                        <div class="footer-email-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        innjoyapp@gmail.com
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <h4 data-tr="Hızlı Linkler" data-en="Quick Links">Hızlı Linkler</h4>
+                    <a href="#features">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        <span data-tr="Özellikler" data-en="Features">Özellikler</span>
+                    </a>
+                    <a href="#admin">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        <span data-tr="Yönetim Paneli" data-en="Admin Panel">Yönetim Paneli</span>
+                    </a>
+                    <a href="#tech">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        <span data-tr="Teknoloji" data-en="Technology">Teknoloji</span>
+                    </a>
+                    <a href="#how-it-works">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        <span data-tr="Nasıl Çalışır" data-en="How It Works">Nasıl Çalışır</span>
+                    </a>
+                    <a href="#team">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        <span data-tr="Ekip" data-en="Team">Ekip</span>
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <h4 data-tr="Özellikler" data-en="Features">Özellikler</h4>
+                    <a href="#features">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+                        <span data-tr="QR Kapı Açma" data-en="QR Door Access">QR Kapı Açma</span>
+                    </a>
+                    <a href="#features">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                        <span data-tr="Oda Servisi" data-en="Room Service">Oda Servisi</span>
+                    </a>
+                    <a href="#features">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                        <span data-tr="Spa &amp; Wellness" data-en="Spa &amp; Wellness">Spa &amp; Wellness</span>
+                    </a>
+                    <a href="#features">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+                        <span data-tr="Restoran Rezervasyonu" data-en="Restaurant Booking">Restoran Rezervasyonu</span>
+                    </a>
+                    <a href="#features">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        <span data-tr="Etkinlikler" data-en="Events &amp; Activities">Etkinlikler</span>
+                    </a>
+                    <a href="#features">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span data-tr="Acil Durum" data-en="Emergency">Acil Durum</span>
+                    </a>
+                    <a href="#features">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <span data-tr="Harcama Takibi" data-en="Spending Tracker">Harcama Takibi</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-tr="&copy; 2026 InnJoy. Tüm hakları saklıdır." data-en="&copy; 2026 InnJoy. All rights reserved.">&copy; 2026 InnJoy. Tüm hakları saklıdır.</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/dogukandireksiz/InnJoy" target="_blank" rel="noopener noreferrer" title="GitHub" class="footer-social-icon github">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/innjoy_app" target="_blank" rel="noopener noreferrer" title="Instagram" class="footer-social-icon instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Yukarı çık" title="Yukarı çık">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
