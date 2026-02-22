@@ -2012,8 +2012,41 @@ body.light-mode .footer-logo {
 }
 
 @media (max-width: 768px) {
-    .app-phones-showcase {
-        grid-template-columns: repeat(2, 1fr);
+    .app-phones-showcase,
+    .admin-phones-showcase {
+        display: flex;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        padding: 10px 20px 24px;
+        margin-bottom: 40px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        justify-content: flex-start;
+    }
+
+    .app-phones-showcase::-webkit-scrollbar,
+    .admin-phones-showcase::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .app-phones-showcase::-webkit-scrollbar-track,
+    .admin-phones-showcase::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .app-phones-showcase::-webkit-scrollbar-thumb,
+    .admin-phones-showcase::-webkit-scrollbar-thumb {
+        background: rgba(19,127,236,0.3);
+        border-radius: 3px;
+    }
+
+    .app-phone-card,
+    .admin-phone-card {
+        flex: 0 0 220px;
+        max-width: 220px;
+        scroll-snap-align: center;
     }
 
     .app-feature-grid {
@@ -2085,17 +2118,12 @@ body.light-mode .footer-logo {
     }
 
     .app-phone-frame {
-        width: 200px;
+        width: 100%;
     }
 
     .app-screens-row {
         gap: 20px;
         padding: 16px 8px 24px;
-    }
-
-    .admin-phones-showcase {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
     }
 
     .gallery-grid {
@@ -2137,7 +2165,7 @@ body.light-mode .footer-logo {
     }
 
     .app-phone-frame {
-        width: 180px;
+        width: 100%;
     }
 
     .app-screens-row {
