@@ -1499,6 +1499,7 @@ body.light-mode .footer-logo {
 
 /* Label below phone */
 .admin-phone-label {
+    display: none;
     font-size: 0.88rem;
     font-weight: 600;
     color: var(--text-secondary);
@@ -1676,6 +1677,7 @@ body.light-mode .footer-logo {
 }
 
 .app-phone-label {
+    display: none;
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-secondary);
