@@ -8,8 +8,9 @@ InnJoy, misafirlerinize unutulmaz bir konaklama deneyimi sunarken, otel yönetim
 
 Bu depo, InnJoy projesinin tanıtım web sitesinin ([innjoy.app](https://innjoy.app)) kaynak kodlarını içermektedir.
 
-🔗 **Canlı Website:** [innjoy.app](https://innjoy.app)
-📥 **Demo Uygulamasını İndir:** [InnJoy APK](https://innjoy.app/InnJoy.apk)
+🔗 **Canlı Website:** [berat-kaan-akcan.github.io/InnJoy_Website/](https://berat-kaan-akcan.github.io/InnJoy_Website/)
+📥 **Demo Uygulamasını İndir:** [InnJoy APK](https://berat-kaan-akcan.github.io/InnJoy_Website/InnJoy.apk)
+
 
 ---
 
